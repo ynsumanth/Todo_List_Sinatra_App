@@ -1,0 +1,24 @@
+  <table id="todo-list" class="table table-striped">
+     <% @items.each do |item| %>
+     <tr id="<%= item[:id] %>">
+      
+	   <td class="item">
+        <%= item[:done]? "<del>#{item[:content]}</del>":item[:content] %>
+	   </td>
+       
+       <span class="pull-right">
+	   <td>
+        <a href="#" class="btn done">
+         <%=item[:done]?"Not Done" :"Done" %>
+        </a>
+		</td>
+		<td>
+        <a href="/delete/<%= item[:id]%>"class="btn btn-danger"> Delete</a>
+		</td>
+       </span>
+     </tr>
+     <% end %>
+   </table>
+   <a href="/new" class="btn btn-default">
+     Add a Todo item
+   </a>
